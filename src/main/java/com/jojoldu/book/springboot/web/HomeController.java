@@ -17,5 +17,6 @@ public class HomeController {
     public HelloResponseDto helloDto(@RequestParam("name") String name,
                                      @RequestParam("amount") int amount){
         return new HelloResponseDto(name, amount);
+        //객체 리턴
     }
 }

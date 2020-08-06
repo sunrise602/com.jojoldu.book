@@ -8,7 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor //기본 생성자 없음
 @ToString
 @Entity
 public class Posts {

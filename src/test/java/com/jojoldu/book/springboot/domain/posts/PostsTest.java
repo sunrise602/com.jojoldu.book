@@ -1,5 +1,6 @@
 package com.jojoldu.book.springboot.domain.posts;
 
+import lombok.RequiredArgsConstructor;
 import org.assertj.core.util.Lists;
 import org.junit.After;
 import org.junit.Test;
@@ -41,16 +42,23 @@ public class PostsTest {
         //방법1
 //        Iterable<Posts> postsList = postsRepository.findAll();
 //        Posts posts = postsList.iterator().next();
-
         //방법2
-        Iterable<Posts> iterable = postsRepository.findAll();
-        List<Posts> list = Lists.newArrayList(iterable);
-        Posts posts = list.get(0);
+//        Iterable<Posts> iterable = postsRepository.findAll();
+//        List<Posts> list = Lists.newArrayList(iterable);
+//        Posts posts = list.get(0);
+
+
+        //CrudRepository의 findAll은 Iterable<T>
+        //JpaRepository의 findAll은 List<T>
+
+
+        List<Posts> postsList = postsRepository.findAll();
 
         //then
-        System.out.println(posts.toString());
-        assertThat(posts.getTitle()).isEqualTo(title);
-        assertThat(posts.getContent()).isEqualTo(content);
+        System.out.println(postsList.toString());
+        Posts post1 = postsList.get(0);
+        assertThat(post1.getTitle()).isEqualTo(title);
+        assertThat(post1.getContent()).isEqualTo(content);
 
     }
 
